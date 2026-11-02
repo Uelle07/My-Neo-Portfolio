@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mary Emanuelle Cabangon — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1b1426;--hi:#2a2140;--lo:#100a1a;--text:#ece6f8;--muted:#a99dc6;
+  --red:#ff2e5f;--purple:#a855f7;--grad:linear-gradient(135deg,var(--red),var(--purple));
+  --raise:9px 9px 20px var(--lo),-9px -9px 20px var(--hi);
+  --raise-sm:5px 5px 11px var(--lo),-5px -5px 11px var(--hi);
+  --inset:inset 6px 6px 12px var(--lo),inset -6px -6px 12px var(--hi);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){--bg:#e7e0f1;--hi:#fcf9ff;--lo:#c4b8d8;--text:#2b1c40;--muted:#645480;color-scheme:light}
+}
+:root[data-theme="light"]{--bg:#e7e0f1;--hi:#fcf9ff;--lo:#c4b8d8;--text:#2b1c40;--muted:#645480;color-scheme:light}
+:root[data-theme="dark"]{--bg:#1b1426;--hi:#2a2140;--lo:#100a1a;--text:#ece6f8;--muted:#a99dc6;color-scheme:dark}
+html{scroll-behavior:smooth;scroll-padding-top:calc(90px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:80px 0}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 8px}
+h2 span,.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin:0 0 36px}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding:14px 0;background:var(--bg)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 18px;border-radius:20px;background:var(--bg);box-shadow:var(--raise-sm)}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;font-size:1.05rem}
+.owl-logo{width:38px;height:38px;border-radius:12px;background:var(--bg);box-shadow:var(--inset);display:grid;place-items:center;transition:transform .25s,box-shadow .25s}
+.logo:hover .owl-logo{transform:translateY(-1px);box-shadow:var(--raise-sm)}
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.links a{padding:8px 14px;border-radius:12px;font-size:.9rem;color:var(--muted);transition:.25s}
+.links a:hover{color:var(--text)}
+.links a.active{color:var(--red);box-shadow:var(--inset)}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:0;background:var(--bg);color:var(--text);box-shadow:var(--raise-sm);cursor:pointer;font-size:1.1rem}
+.icon-btn:active{box-shadow:var(--inset)}
+/* buttons / cards */
+.btn{display:inline-block;padding:14px 28px;border-radius:16px;border:0;background:var(--bg);color:var(--text);font:inherit;font-weight:500;cursor:pointer;box-shadow:var(--raise-sm);transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{box-shadow:var(--inset);transform:none}
+.btn.primary{background:var(--grad);color:#fff;box-shadow:5px 5px 14px var(--lo),-4px -4px 12px var(--hi),0 0 18px rgba(255,46,95,.35)}
+.card{background:var(--bg);border-radius:26px;box-shadow:var(--raise);padding:28px}
+/* hero */
+.hero{min-height:78vh;display:flex;align-items:center;padding:40px 0}
+.hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.eyebrow{color:var(--red);letter-spacing:3px;font-size:.8rem;text-transform:uppercase}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);line-height:1.1;margin:10px 0}
+.role{font-size:1.25rem;color:var(--muted);min-height:2em}
+.role b{color:var(--purple);font-weight:500}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--red);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+.avatar-wrap{display:grid;place-items:center}
+.avatar{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;background:var(--bg);box-shadow:var(--raise);display:grid;place-items:center;padding:18px}
+.avatar-in{width:100%;height:100%;border-radius:50%;box-shadow:var(--inset);display:grid;place-items:center;overflow:hidden;font-size:4rem;font-weight:700}
+.avatar-in img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+/* about */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.stat{border-radius:20px;box-shadow:var(--inset);padding:18px;text-align:center}
+.stat strong{display:block;font-size:1.8rem}
+.stat small{color:var(--muted)}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.skills-card{display:flex;flex-direction:column}
+.skill{margin-bottom:18px}
+.skill:last-child{margin-bottom:0}
+.skill-top{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:8px}
+.track{height:14px;border-radius:10px;box-shadow:var(--inset);padding:3px}
+.fill{height:100%;width:0;border-radius:8px;background:var(--grad);transition:width 1.3s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 10px rgba(255,46,95,.5)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;align-content:flex-start}
+.chip{padding:9px 18px;border-radius:30px;font-size:.88rem;box-shadow:var(--raise-sm);color:var(--muted);transition:all .2s ease;display:inline-flex;align-items:center}
+.chip:hover{color:var(--text);transform:translateY(-2px);box-shadow:var(--inset)}
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
+.project{display:flex;flex-direction:column;gap:14px;transition:transform .3s}
+.project:hover{transform:translateY(-6px)}
+.thumb{height:165px;border-radius:18px;box-shadow:var(--inset);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px;overflow:hidden;position:relative;text-align:center}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb-icon{width:56px;height:56px;border-radius:18px;box-shadow:var(--raise-sm);display:grid;place-items:center;font-size:1.65rem}
+.thumb-badge{font-size:.74rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:20px;box-shadow:var(--raise-sm);color:var(--red)}
+.project h3{margin:0;font-size:1.22rem}
+.project p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55;flex:1}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.tags span{font-size:.75rem;padding:4px 12px;border-radius:20px;box-shadow:var(--inset);color:var(--purple);font-weight:500}
+.plinks{display:flex;gap:14px;padding-top:4px}
+.plinks a{font-size:.88rem;font-weight:500;color:var(--red);display:inline-flex;align-items:center;gap:4px}
+.plinks a:hover{text-decoration:underline}
+.slot{border:2px dashed color-mix(in srgb,var(--purple) 45%,transparent);background:transparent;box-shadow:none;align-items:center;justify-content:center;text-align:center;min-height:300px;color:var(--muted)}
+.slot .plus{width:60px;height:60px;border-radius:50%;box-shadow:var(--raise-sm);display:grid;place-items:center;font-size:1.8rem;color:var(--red)}
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:stretch}
+.contact-card{display:flex;flex-direction:column;justify-content:space-between}
+.field{width:100%;padding:14px 18px;margin-bottom:16px;border:0;border-radius:16px;background:var(--bg);color:var(--text);font:inherit;box-shadow:var(--inset);outline:none}
+.field:focus{box-shadow:var(--inset),0 0 0 2px var(--purple)}
+.contact-list{display:grid;gap:14px}
+.contact-item{display:flex;gap:14px;align-items:center;padding:13px 16px;border-radius:18px;box-shadow:var(--raise-sm);transition:transform .2s,box-shadow .2s,color .2s}
+.contact-item:hover{transform:translateY(-2px);color:var(--red)}
+.contact-item:active{box-shadow:var(--inset);transform:none}
+.c-icon{width:42px;height:42px;border-radius:14px;box-shadow:var(--inset);display:grid;place-items:center;font-weight:700;font-size:1.05rem;flex-shrink:0}
+.c-info{display:flex;flex-direction:column;line-height:1.35;min-width:0}
+.c-info small{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.9px}
+.c-info strong{font-size:.93rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:820px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .avatar-wrap{order:-1}
+  .links{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media print{.reveal{opacity:1!important;transform:none!important}nav{position:static}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><div class="nav-in">
+  <a href="#home" class="logo" aria-label="Uelle Home">
+    <span class="owl-logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+        <defs>
+          <linearGradient id="codeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff2e5f"/>
+            <stop offset="100%" stop-color="#a855f7"/>
+          </linearGradient>
+        </defs>
+        <polyline points="8 7 3 12 8 17" stroke="url(#codeGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="16 7 21 12 16 17" stroke="url(#codeGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="13.5" y1="5" x2="10.5" y2="19" stroke="url(#codeGrad)" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span><span class="grad" id="logoName">Uelle</span>_</span>
+  </a>
+  <div class="links" id="links">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+  </div>
+  <button class="icon-btn" id="theme" aria-label="Toggle theme">◐</button>
+</div></div></nav>
+
+<main class="wrap">
+<section id="home" class="hero"><div class="hero-grid">
+  <div class="reveal">
+    <div class="eyebrow">Hello, I’m</div>
+    <h1><span class="grad" id="name">Mary Emanuelle Cabangon</span></h1>
+    <div class="role"><b id="typed"></b><span class="caret"></span></div>
+    <p class="sub" id="tagline" style="margin:14px 0 0;max-width:46ch">3rd-year BSIT student specializing in Web & Mobile Application Development at BulSU.</p>
+    <div class="cta"><a class="btn primary" href="#projects">View My Work</a><a class="btn" href="#contact">Get In Touch</a></div>
+  </div>
+  <div class="avatar-wrap reveal"><div class="avatar"><div class="avatar-in" id="avatar"><img alt="Mary Emanuelle Cabangon" src="assets/profile.png"></div></div></div>
+</div></section>
+
+<section id="about"><h2 class="reveal">About <span>Me</span></h2><p class="sub reveal">Who I am and what I care about.</p>
+  <div class="about-grid">
+    <div class="card reveal"><p id="bio">3rd-year BSIT student specializing in Web and Mobile Application Development at Bulacan State University (Main Campus). Passionate about software engineering, clean design, and practical development, with a growing portfolio of academic systems and self-driven independent builds. Based in Malolos, Bulacan.</p></div>
+    <div class="stats reveal" id="stats"></div>
+  </div>
+</section>
+
+<section id="skills"><h2 class="reveal">My <span>Skills</span></h2><p class="sub reveal">Tools and technologies I work with.</p>
+  <div class="skills">
+    <div class="card reveal skills-card">
+      <h3 style="margin-top:0;margin-bottom:20px">Technical Proficiency</h3>
+      <div id="skillBars"></div>
+    </div>
+    <div class="card reveal skills-card">
+      <h3 style="margin-top:0;margin-bottom:10px">Tools & Methodologies</h3>
+      <p style="margin:0 0 20px;color:var(--muted);font-size:.92rem;line-height:1.5">Modern frameworks, developer utilities, and workflow practices I utilize for web and mobile solutions.</p>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects"><h2 class="reveal">My <span>Projects</span></h2><p class="sub reveal">A selection of things I’ve built.</p>
+  <div class="grid" id="projectGrid"></div>
+</section>
+
+<section id="contact"><h2 class="reveal">Let’s <span>Connect</span></h2><p class="sub reveal">Have an idea or an opportunity? Say hi.</p>
+  <div class="contact-grid">
+    <div class="card reveal contact-card">
+      <div>
+        <h3 style="margin:0 0 8px">Contact Information</h3>
+        <p style="margin:0 0 20px;color:var(--muted);font-size:.92rem;line-height:1.5">Open for internships, academic collaborations, and web or mobile development inquiries.</p>
+      </div>
+      <div class="contact-list" id="contactList"></div>
+    </div>
+    <div class="card reveal contact-card">
+      <h3 style="margin:0 0 16px">Send a Message</h3>
+      <div>
+        <input class="field" id="fName" placeholder="Your name">
+        <input class="field" id="fEmail" type="email" placeholder="Your email">
+        <textarea class="field" id="fMsg" rows="5" placeholder="Your message"></textarea>
+      </div>
+      <div>
+        <button class="btn primary" id="send">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><span id="foot">© 2026 Mary Emanuelle Cabangon. All rights reserved.</span></footer>
+
+<script>
+/* ============ EDIT YOUR INFO HERE ============ */
+const ME = {
+  name: "Mary Emanuelle Cabangon",
+  logo: "Uelle",
+  roles: ["Web & Mobile Developer", "BSIT Student", "Software Engineering Enthusiast"],
+  tagline: "3rd-year BSIT student specializing in Web & Mobile Application Development at BulSU.",
+  photo: "assets/profile.png",
+  bio: "3rd-year BSIT student specializing in Web and Mobile Application Development at Bulacan State University (Main Campus). Passionate about software engineering, clean design, and practical development, with a growing portfolio of academic systems and self-driven independent builds. Based in Malolos, Bulacan.",
+  stats: [["3rd","Year BSIT"],["BulSU","Main Campus"],["WMA","Specialization"],["Malolos","Bulacan"]],
+  skills: [["HTML & CSS",90],["JavaScript",85],["PHP & MySQL",80],["Mobile Dev",75]],
+  extras: [
+    "Git & GitHub",
+    "Figma",
+    "Flutter",
+    "Bootstrap",
+    "Tailwind CSS",
+    "MySQL",
+    "RESTful APIs",
+    "Postman",
+    "Responsive Design",
+    "UI / UX Design",
+    "OOP & MVC"
+  ],
+  contact: {
+    email: "uelle2006@gmail.com",
+    phone: "",
+    location: "Malolos, Bulacan, Philippines",
+    university: "Bulacan State University (Main Campus)",
+    github: "https://github.com/Uelle07",
+    githubLabel: "github.com/Uelle07",
+    linkedin: ""
+  }
+};
+/* ============ YOUR PROJECTS ============ */
+const PROJECTS = [
+  {
+    title: "Scholarium",
+    badge: "Web Platform & AI",
+    icon: "🎓",
+    description: "A modern platform connecting Filipino students with scholarships and university publication opportunities. Features a zero-friction public scholarship directory with regional filtering, an automated Multimodal AI ingestion pipeline (Gemini Flash) for visual poster OCR, and an authenticated student portfolio ecosystem.",
+    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "Supabase", "Gemini AI"],
+    image: "",
+    live: "",
+    code: "https://github.com/Uelle07/Scholarium"
+  },
+  {
+    title: "AdvWeb — Website (Seb) Clone (HOLESeeker)",
+    badge: "AdvWeb • PWA & GIS System",
+    icon: "🗺️",
+    description: "A unified web and mobile Progressive Web Application (PWA) for Malolos City road hazard reporting and public works maintenance. Bridges citizens, municipal administrators, and field crews with GPS coordinate capture, interactive Leaflet GIS mapping, and before-and-after repair photo verification.",
+    tags: ["React 18", "TypeScript", "Tailwind CSS", "PHP & MySQL", "Leaflet GIS", "PWA"],
+    image: "",
+    live: "",
+    code: "https://github.com/HOLESeeker-SPACE/HOLESeeker"
+  },
+  {
+    title: "QuickFix",
+    badge: "Mobile App • Campus Maintenance",
+    icon: "🛠️",
+    description: "A student campus maintenance reporting mobile application built with Flutter and Firebase. Empowers university students to report damaged classroom and facility equipment using native camera capture and real-time GPS geolocation, with cloud status tracking and 100% WCAG AA/AAA accessible UI.",
+    tags: ["Flutter", "Dart", "Firebase Auth", "Cloud Firestore", "Geolocator"],
+    image: "",
+    live: "",
+    code: "https://github.com/Uelle07/QuickFix---MAD"
+  }
+];
+/* ============================================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const initials = ME.name.split(/\s+/).map(w => w[0]).join("").slice(0,2).toUpperCase();
+
+document.title = ME.name + " — Portfolio";
+$("#name").textContent = ME.name; $("#logoName").textContent = ME.logo || initials; $("#tagline").textContent = ME.tagline;
+$("#bio").textContent = ME.bio; $("#foot").textContent = "© " + new Date().getFullYear() + " " + ME.name + ". All rights reserved.";
+if (ME.photo) $("#avatar").innerHTML = '<img alt="' + esc(ME.name) + '" src="' + esc(ME.photo) + '">'; else $("#initials").textContent = initials;
+
+$("#stats").innerHTML = ME.stats.map(s => '<div class="stat"><strong class="grad">' + esc(s[0]) + '</strong><small>' + esc(s[1]) + '</small></div>').join("");
+$("#skillBars").innerHTML = ME.skills.map(s => '<div class="skill"><div class="skill-top"><span>' + esc(s[0]) + '</span><span>' + s[1] + '%</span></div><div class="track"><div class="fill" data-w="' + s[1] + '"></div></div></div>').join("");
+$("#chips").innerHTML = ME.extras.map(e => '<span class="chip">' + esc(e) + '</span>').join("");
+
+const c = ME.contact, items = [];
+if (c.email) items.push(["✉", "Email", c.email, "mailto:" + c.email]);
+if (c.github) items.push(["⌘", "GitHub", c.githubLabel || "GitHub", c.github]);
+if (c.university) items.push(["🎓", "Institution", c.university, "#about"]);
+if (c.location) items.push(["⌖", "Location", c.location, "#contact"]);
+if (c.phone) items.push(["☎", "Phone", c.phone, "tel:" + c.phone]);
+if (c.linkedin) items.push(["in", "LinkedIn", "LinkedIn", c.linkedin]);
+$("#contactList").innerHTML = items.map(i => {
+  const isExt = i[3].startsWith("http");
+  return '<a class="contact-item" href="' + esc(i[3]) + '"' + (isExt ? ' target="_blank" rel="noopener"' : '') + '><div class="c-icon"><span class="grad">' + i[0] + '</span></div><div class="c-info"><small>' + esc(i[1]) + '</small><strong>' + esc(i[2]) + '</strong></div></a>';
+}).join("");
+
+/* projects: real cards first, then dashed slots up to 3 */
+const pg = $("#projectGrid");
+let html = PROJECTS.map(p => {
+  const links = (p.live ? '<a href="' + esc(p.live) + '" target="_blank" rel="noopener">Live Demo ↗</a>' : "") + (p.code ? '<a href="' + esc(p.code) + '" target="_blank" rel="noopener">View Repository ↗</a>' : "");
+  const thumbInner = p.image
+    ? '<img alt="' + esc(p.title) + '" src="' + esc(p.image) + '">'
+    : '<div class="thumb-icon"><span class="grad">' + (p.icon || "{ }") + '</span></div>' + (p.badge ? '<span class="thumb-badge">' + esc(p.badge) + '</span>' : '');
+  return '<article class="card project reveal"><div class="thumb">' + thumbInner + '</div><h3>' + esc(p.title) + '</h3><p>' + esc(p.description || "") + '</p><div class="tags">' + (p.tags || []).map(t => '<span>' + esc(t) + '</span>').join("") + '</div>' + (links ? '<div class="plinks">' + links + '</div>' : '') + '</article>';
+}).join("");
+for (let i = PROJECTS.length; i < 3; i++) html += '<article class="card project slot reveal"><div class="plus">+</div><h3>Project slot ' + (i + 1) + '</h3><p style="flex:0">Your project will appear here.</p></article>';
+pg.innerHTML = html;
+
+/* typing effect */
+let ri = 0, ci = 0, del = false;
+(function tick(){
+  const word = ME.roles[ri];
+  $("#typed").textContent = word.slice(0, ci);
+  if (!del && ci === word.length) { del = true; return setTimeout(tick, 1400); }
+  if (del && ci === 0) { del = false; ri = (ri + 1) % ME.roles.length; }
+  ci += del ? -1 : 1;
+  setTimeout(tick, del ? 40 : 85);
+})();
+
+/* reveal + skill bars */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in");
+  e.target.querySelectorAll(".fill").forEach(f => f.style.width = f.dataset.w + "%");
+  io.unobserve(e.target);
+}), {threshold:.15});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* active nav link */
+const secs = [...document.querySelectorAll("section")], links = [...document.querySelectorAll("#links a")];
+addEventListener("scroll", () => {
+  let cur = secs[0].id;
+  secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .4) cur = s.id; });
+  links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + cur));
+}, {passive:true});
+
+/* theme toggle */
+const root = document.documentElement;
+try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+$("#theme").onclick = () => {
+  const isDark = root.dataset.theme ? root.dataset.theme === "dark" : !matchMedia("(prefers-color-scheme: light)").matches;
+  root.dataset.theme = isDark ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+};
+
+/* contact form → opens the visitor's email app */
+$("#send").onclick = () => {
+  const n = $("#fName").value, m = $("#fMsg").value, e = $("#fEmail").value;
+  location.href = "mailto:" + ME.contact.email + "?subject=" + encodeURIComponent("Portfolio message from " + n) + "&body=" + encodeURIComponent(m + "\n\n" + e);
+};
+</script>
+</body>
+</html>
+
+
+
